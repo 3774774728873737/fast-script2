@@ -16,11 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-@app.get("/")
-def read_root():
-    return Response(content=open("index.html", "r").read(), media_type="text/html")
 
 @app.post("/upload-audio")
 async def upload_audio(audio: UploadFile = File(None)):
